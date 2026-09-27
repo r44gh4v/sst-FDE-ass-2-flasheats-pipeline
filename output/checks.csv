@@ -1,0 +1,14 @@
+check,result,details,action,critical
+API returned every record exactly once,PASS,"16 pages, 1600 records, API says 1600, 1600 unique order ids, 2 failed requests retried",Saved every raw page in output/raw,True
+Row counts match the client's manifest.json,PASS,all 6 counts match,"Nothing, it confirms no table was cut short",True
+Orders table and dispatch API have the same orders,PASS,0 orders in one but not the other,Joined them one to one,True
+One row per order,WARN,3 orders appear twice; the copies only differ on traffic_bucket,Kept the first copy (the difference doesn't affect the KPI),False
+Delivered orders have a delivery time,WARN,"37 of 1532 delivered orders have no delivery time. The driver app has one for 37 of them, and it matches the orders table to the second on 100.0% of the 1495 orders both systems timed",Used the driver app time for those orders (only because the two systems agree),False
+Timestamps are in the right order,WARN,4 orders have a promised ETA before the order was placed; 5 orders were delivered before they were picked up,Left the first group out of the KPI and the second out of the pickup/transit split,False
+Status and category values are written one way,WARN,"final_status: 'Delivered' x5; traffic: 'HIGH' x3; ticket category: 'Late Delivery' x1, 'late_delivery ' x1, 'ETA issue' x1; restaurant status: 'ready ' x2, 'READY' x1, 'Ready' x1","Fixed case and spaces only. Did not merge values that might mean something different, like 'ETA issue' or 'handoff'",False
+Which ETA counts as the promise?,WARN,Dispatch moved the ETA later on 91.4% of orders (median +8.3 min). The late rate is 56.4% against the original promise but only 25.9% against the updated ETA,"Used the original promise, because that is what the customer saw at checkout",False
+orders.driver_id is the driver who delivered,WARN,orders.driver_id is always the first driver assigned; 95 orders were reassigned,Took the driver from the dispatch API instead,False
+Distance column is usable,FAIL,"50.4% of orders are exactly 18.0 km. Working out the straight-line distance from the coordinates, those orders are always more than 18.1 km away, so 18.0 is a cap, not a real distance",Didn't use distance,False
+Can we tell restaurant delay from driver delay?,UNKNOWN,"The driver app has no 'arrived at restaurant' event (only assigned, delivered, gps_ping, picked_up), and restaurant status only covers 31% of orders with just the latest status",Reported the delay before pickup as one number,False
+Interventions happen while the order is in progress,WARN,"1 logged before the order was placed, 45 after delivery (all customer credits)",Only counted interventions made before delivery when checking if they help,False
+Delay numbers match the client's order_outcomes.csv,PASS,match on 100.0% of the 1495 orders it has a delay for,"Only used order_outcomes.csv for this cross-check, not as an input",False

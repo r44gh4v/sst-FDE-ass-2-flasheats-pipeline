@@ -1,0 +1,6 @@
+id,metric,type,value,numerator,denominator,unit,meaning
+M1,Late Delivery Rate,Outcome (the KPI),0.5648,863,1528,share,Is the KPI
+M2,Pickup Slip Rate,Workflow (where delay starts),0.4209,641,1523,share,98.9% of late minutes happen before pickup
+M3,ETA Drift,Promise reliability,8.08,,1528,minutes,Against the updated ETA the late rate would be 26.2% instead of M1
+M4,Late-Order Support Contact Rate,Customer reaction,0.299,258,863,share,On-time orders: 5.1%
+M5,At-Risk Intervention Coverage,Intervention,0.2075,133,641,share,At-risk orders end up late 96.9% of the time

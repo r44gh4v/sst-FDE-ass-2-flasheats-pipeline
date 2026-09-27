@@ -1,0 +1,155 @@
+{
+  "api": {
+    "pages": 16,
+    "records": 1600,
+    "reported_total": 1600,
+    "unique_ids": 1600,
+    "retries": 2
+  },
+  "row_counts": {
+    "orders_rows": 1603,
+    "driver_events": 10035,
+    "support_tickets": 202,
+    "customer_app_actions": 2365,
+    "order_interventions": 430,
+    "restaurant_status": 502
+  },
+  "checks": {
+    "PASS": 4,
+    "WARN": 7,
+    "FAIL": 1,
+    "UNKNOWN": 1
+  },
+  "found": {
+    "duplicate_orders": 3,
+    "untimed_delivered": 37,
+    "both_timed": 1495,
+    "use_driver_app": true,
+    "bad_promise": 4,
+    "inverted": 5,
+    "eta_revised_share": 0.914375,
+    "reassigned": 95,
+    "distance_capped_share": 0.50375,
+    "interventions_after_delivery": 45
+  },
+  "metrics": [
+    {
+      "id": "M1",
+      "metric": "Late Delivery Rate",
+      "type": "Outcome (the KPI)",
+      "value": 0.5648,
+      "numerator": 863,
+      "denominator": 1528,
+      "unit": "share",
+      "meaning": "Is the KPI"
+    },
+    {
+      "id": "M2",
+      "metric": "Pickup Slip Rate",
+      "type": "Workflow (where delay starts)",
+      "value": 0.4209,
+      "numerator": 641,
+      "denominator": 1523,
+      "unit": "share",
+      "meaning": "98.9% of late minutes happen before pickup"
+    },
+    {
+      "id": "M3",
+      "metric": "ETA Drift",
+      "type": "Promise reliability",
+      "value": 8.08,
+      "numerator": null,
+      "denominator": 1528,
+      "unit": "minutes",
+      "meaning": "Against the updated ETA the late rate would be 26.2% instead of M1"
+    },
+    {
+      "id": "M4",
+      "metric": "Late-Order Support Contact Rate",
+      "type": "Customer reaction",
+      "value": 0.299,
+      "numerator": 258,
+      "denominator": 863,
+      "unit": "share",
+      "meaning": "On-time orders: 5.1%"
+    },
+    {
+      "id": "M5",
+      "metric": "At-Risk Intervention Coverage",
+      "type": "Intervention",
+      "value": 0.2075,
+      "numerator": 133,
+      "denominator": 641,
+      "unit": "share",
+      "meaning": "At-risk orders end up late 96.9% of the time"
+    }
+  ],
+  "late_rate_by_definition": [
+    {
+      "definition": "Any minute after the original promise (VP Operations, = M1)",
+      "value": 0.5648,
+      "numerator": 863,
+      "denominator": 1528
+    },
+    {
+      "definition": "More than 10 minutes late (Support Lead)",
+      "value": 0.2317,
+      "numerator": 354,
+      "denominator": 1528
+    },
+    {
+      "definition": "Against the updated ETA (not the KPI)",
+      "value": 0.2624,
+      "numerator": 401,
+      "denominator": 1528
+    }
+  ],
+  "delay_split": {
+    "late_minutes_before_pickup": 0.9893,
+    "late_orders_pickup_slip_median": 13.9,
+    "late_orders_transit_overrun_median": -5.9,
+    "late_rate_if_at_risk": {
+      "value": 0.9688,
+      "numerator": 621,
+      "denominator": 641
+    },
+    "late_rate_if_not_at_risk": {
+      "value": 0.2721,
+      "numerator": 240,
+      "denominator": 882
+    }
+  },
+  "interventions": {
+    "at_risk_with": {
+      "value": 0.9699,
+      "numerator": 129,
+      "denominator": 133
+    },
+    "at_risk_without": {
+      "value": 0.9685,
+      "numerator": 492,
+      "denominator": 508
+    }
+  },
+  "customers": {
+    "support_on_time": {
+      "value": 0.0511,
+      "numerator": 34,
+      "denominator": 665
+    },
+    "support_late": {
+      "value": 0.299,
+      "numerator": 258,
+      "denominator": 863
+    }
+  },
+  "population": {
+    "orders": 1600,
+    "in_kpi": 1528,
+    "excluded": {
+      "not_delivered": 68,
+      "promise_before_order": 4
+    },
+    "recovered_from_driver_app": 37
+  }
+}

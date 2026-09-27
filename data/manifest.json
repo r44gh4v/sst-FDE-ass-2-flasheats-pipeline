@@ -1,0 +1,11 @@
+{
+  "pack_name": "FlashEats Classroom Data Pack",
+  "record_counts": {
+    "orders_rows": 1603,
+    "unique_orders": 1600,
+    "support_tickets_rows": 202,
+    "dispatch_records": 1600,
+    "drivers": 120,
+    "restaurants": 60
+  }
+}

@@ -1,0 +1,38 @@
+18:13:25 INFO    Starting the mock dispatch API
+18:13:25 INFO    1. INGEST
+18:13:25 INFO    SQL  orders: 1603 rows
+18:13:25 INFO    SQL  customers: 900 rows
+18:13:25 INFO    SQL  drivers: 120 rows
+18:13:25 INFO    SQL  restaurants: 60 rows
+18:13:26 WARNING API  page 3: HTTP 500, retry 1/3 in 1s
+18:13:27 WARNING API  page 5: HTTP 429, retry 1/3 in 1s
+18:13:28 INFO    API  16 pages, 1600 records (API says 1600), 2 retries
+18:13:28 INFO    JSON driver_events: 10035 events
+18:13:28 INFO    CSV  support_tickets: 202 rows
+18:13:28 INFO    CSV  customer_app_actions: 2365 rows
+18:13:28 INFO    CSV  order_interventions: 430 rows
+18:13:28 INFO    CSV  restaurant_status: 502 rows
+18:13:28 INFO    CSV  order_outcomes: 1600 rows
+18:13:28 INFO    2. VALIDATE
+18:13:28 INFO    PASS    API returned every record exactly once
+18:13:28 INFO    PASS    Row counts match the client's manifest.json
+18:13:28 INFO    PASS    Orders table and dispatch API have the same orders
+18:13:28 WARNING WARN    One row per order
+18:13:28 WARNING WARN    Delivered orders have a delivery time
+18:13:28 WARNING WARN    Timestamps are in the right order
+18:13:28 WARNING WARN    Status and category values are written one way
+18:13:28 WARNING WARN    Which ETA counts as the promise?
+18:13:28 WARNING WARN    orders.driver_id is the driver who delivered
+18:13:28 WARNING FAIL    Distance column is usable
+18:13:28 WARNING UNKNOWN Can we tell restaurant delay from driver delay?
+18:13:28 WARNING WARN    Interventions happen while the order is in progress
+18:13:28 INFO    PASS    Delay numbers match the client's order_outcomes.csv
+18:13:28 INFO    3. TRANSFORM
+18:13:28 INFO    Order table: 1600 rows, 1528 in the KPI
+18:13:28 INFO    4. METRICS
+18:13:28 INFO    M1 Late Delivery Rate: 0.5648
+18:13:28 INFO    M2 Pickup Slip Rate: 0.4209
+18:13:28 INFO    M3 ETA Drift: 8.08
+18:13:28 INFO    M4 Late-Order Support Contact Rate: 0.299
+18:13:28 INFO    M5 At-Risk Intervention Coverage: 0.2075
+18:13:28 INFO    Done - see output/report.md

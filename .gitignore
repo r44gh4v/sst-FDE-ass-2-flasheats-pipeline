@@ -1,0 +1,5 @@
+.venv/
+__pycache__/
+
+# raw API pages re-created when the Class 5 solution notebooks run (same as output/raw/)
+Challenge_Solutions/raw_dispatch/
