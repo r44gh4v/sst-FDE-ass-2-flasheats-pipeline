@@ -177,21 +177,6 @@ can be checked without running anything.
 - **Act on at-risk orders earlier** - only 20.8% get an intervention before pickup today. Test one
   intervention against a control group, agree who owns the KPI, then re-run this pipeline and compare.
 
-## Class challenge solutions
-
-Solved versions of the FlashEats class notebooks are in [Challenge_Solutions/](Challenge_Solutions/). Each keeps
-the original prompts, fills in every TODO, and has a written answer after each challenge:
-
-| Notebook | Covers |
-|---|---|
-| [Class 5 Starter](Challenge_Solutions/FlashEats_Class5_Starter_Solved.ipynb) | size the late problem (SQL), test "traffic is the problem", support tickets, reliable API retrieval, driver events |
-| [Class 5 Student](Challenge_Solutions/FlashEats_Class5_Student_Solved.ipynb) | the same investigation, plus the source map and the final recommendation |
-| [Class 6 Student](Challenge_Solutions/FlashEats_Class6_Student_Solved.ipynb) | validation contract, "late" under each stakeholder's definition, categories, mapping, freshness, the PASS / WARN / FAIL gate |
-| [Class 7 Challenge](Challenge_Solutions/FlashEats_Class7_Challenge_Solved.ipynb) | order timelines, the order-centred model, interaction -> intervention -> outcome, metrics, workflow questions |
-
-They run from inside `Challenge_Solutions/` using this repo's `database/`, `data/` and `api/` folders. To re-run
-them: `pip install -r requirements.txt matplotlib notebook`.
-
 ## Project files
 
 ```
